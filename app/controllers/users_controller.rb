@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
   def index
     users = User
-              .by_company(params[:company_identifier])
+              .by_company(search_params[:company_identifier])
               .by_username(search_params[:username])
     render json: users.all
   end
@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   private
 
   def search_params
-    params.permit(:username)
+    params.permit(:username, :company_identifier)
   end
 
 end
