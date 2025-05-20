@@ -12,6 +12,11 @@ Rails.application.configure do
   # Show full error reports.
   config.consider_all_requests_local = true
 
+  
+  config.middleware.use ActionDispatch::Cookies
+  config.middleware.use ActionDispatch::Session::CookieStore
+  config.middleware.use ActionDispatch::Flash
+  
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
   if Rails.root.join('tmp', 'caching-dev.txt').exist?

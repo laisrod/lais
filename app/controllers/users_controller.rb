@@ -7,6 +7,12 @@ class UsersController < ApplicationController
     render json: users.all
   end
 
+  def send_welcome_email
+    user = User.find(params[:id])
+    UserMailer.welcome_email(user).deliver_now
+    redirect_to user.company, notice: 'E-mail de boas-vindas enviado'
+  end
+
   private
 
   def search_params

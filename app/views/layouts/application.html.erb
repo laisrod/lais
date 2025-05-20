@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Nome da Aplicação</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta charset="utf-8">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= javascript_include_tag "application", "data-turbolinks-track": "reload" %>
+  </head>
+
+  <body>
+    <% if flash[:notice] %>
+      <div><%= flash[:notice] %></div>
+    <% end %>
+    <% if flash[:alert] %>
+      <div><%= flash[:alert] %></div>
+    <% end %>
+    
+    <%= yield %>
+  </body>
+</html>

@@ -13,4 +13,12 @@ class User < ApplicationRecord
     query = query.where('created_at < ?', cursor) if cursor.present?
     query.limit(limit)
   end
+
+  after_create :send_welcome_email
+
+  private
+
+  def send_welcome_email
+    UserMailer.welcome_email(self).deliver_now
+  end
 end

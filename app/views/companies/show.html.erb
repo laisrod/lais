@@ -1,0 +1,14 @@
+<h1><%= @company.name %></h1>
+
+<p><%= link_to 'Editar', edit_company_path(@company) %></p>
+<p><%= button_to 'Deletar', company_path(@company), method: :delete, 
+       form: { style: 'display: inline-block;' }, 
+       style: 'background: none; border: none; padding: 0; font-family: inherit; font-size: inherit; color: inherit; text-decoration: underline; cursor: pointer;' %></p>
+<p><%= link_to 'Voltar', companies_path %></p>
+
+<h2>Users</h2>
+<% @company.users.each do |user| %>
+  <ul>
+    <li><%= user.display_name %> <%= link_to 'Enviar e-mail de boas-vindas', send_welcome_email_path(id: user.id) %></li>
+  </ul>
+<% end %>
